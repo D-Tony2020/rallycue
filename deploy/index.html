@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RallyCue — In-Motion Active Coaching</title>
+    <meta name="description" content="RallyCue pairs a voice-coaching headband with a stereo courtside camera to deliver real-time biomechanical cues for net sports." />
+
+    <!-- Canonical & theme -->
+    <link rel="canonical" href="https://rallycue.us/" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="icon" type="image/png" href="src/assets/logo-mark.png" />
+    <link rel="apple-touch-icon" href="src/assets/logo-mark.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rallycue.us/" />
+    <meta property="og:title" content="RallyCue — In-Motion Active Coaching" />
+    <meta property="og:description" content="A voice-coaching headband + stereo courtside camera delivering real-time biomechanical cues for net sports. Correct your form in the same swing, not hours later." />
+    <meta property="og:image" content="https://rallycue.us/src/assets/logo-mark.png" />
+    <meta property="og:site_name" content="RallyCue" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RallyCue — In-Motion Active Coaching" />
+    <meta name="twitter:description" content="Real-time voice coaching for tennis, pickleball, badminton and more." />
+    <meta name="twitter:image" content="https://rallycue.us/src/assets/logo-mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --nf-orange: #E84B1A;
+        --nf-lime: #C8FF00;
+      }
+      html, body { background: #0A0A0A; color: #f2f2f2; }
+      body { font-family: 'Space Grotesk', sans-serif; }
+      h1,h2,h3,h4,h5,h6 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+
+      .nf-section-label {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--nf-orange);
+      }
+      .nf-display {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 800;
+        line-height: 0.9;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+      }
+      .nf-card { background: #121212; border: 1px solid #222; }
+      .nf-card:hover { border-color: rgba(232,75,26,0.5); }
+      .nf-lime-text { color: var(--nf-lime); }
+
+      .nf-btn-primary {
+        background: var(--nf-orange);
+        color: #fff;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.875rem 2rem;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        border: 1px solid var(--nf-orange);
+      }
+      .nf-btn-primary:hover { background: #ff5c2a; transform: translateY(-1px); }
+      .nf-btn-outline {
+        background: transparent;
+        border: 1px solid var(--nf-orange);
+        color: var(--nf-orange);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.875rem 2rem;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .nf-btn-outline:hover { background: rgba(232,75,26,0.1); }
+      button, [role="button"] { cursor: pointer; }
+
+      @keyframes scanline {
+        0% { top: 20%; opacity: 0; }
+        20% { opacity: 0.3; }
+        80% { opacity: 0.3; }
+        100% { top: 80%; opacity: 0; }
+      }
+      @keyframes float-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fade-in {
+        from { opacity: 0; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+    <script type="text/babel">
+      const { useState, useEffect, useRef } = React;
+      window.useState = useState; window.useEffect = useEffect; window.useRef = useRef;
+    </script>
+
+    <script type="text/babel" src="preview-components.jsx"></script>
+
+    <script type="text/babel">
+      function Home() {
+        return (
+          <div className="bg-[#0A0A0A] min-h-screen">
+            <Navbar />
+            <HeroSection />
+            <ProblemSection />
+            <ProductSection />
+            <TechPipelineSection />
+            <StoryboardSection />
+            <CompetitorSection />
+            <MarketScaleSection />
+            <PricingSection />
+            <SignupSection />
+            <Footer />
+            <SurveyInvitePopup />
+          </div>
+        );
+      }
+      ReactDOM.createRoot(document.getElementById('root')).render(<Home />);
+    </script>
+  </body>
+</html>
